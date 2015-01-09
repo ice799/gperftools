@@ -47,34 +47,11 @@
 #ifndef RB_H_
 #define	RB_H_
 
-#define RB_COMPACT
+#include "rb_defs.h"
 
 #if 0
 __FBSDID("$FreeBSD: head/lib/libc/stdlib/rb.h 204493 2010-02-28 22:57:13Z jasone $");
 #endif
-
-#ifdef RB_COMPACT
-/* Node structure. */
-#define	rb_node(a_type)							\
-struct {								\
-    a_type *rbn_left;							\
-    a_type *rbn_right_red;						\
-}
-#else
-#define	rb_node(a_type)							\
-struct {								\
-    a_type *rbn_left;							\
-    a_type *rbn_right;							\
-    bool rbn_red;							\
-}
-#endif
-
-/* Root structure. */
-#define	rb_tree(a_type)							\
-struct {								\
-    a_type *rbt_root;							\
-    a_type rbt_nil;							\
-}
 
 /* Left accessors. */
 #define	rbtn_left_get(a_type, a_field, a_node)				\

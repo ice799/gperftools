@@ -37,9 +37,12 @@
 #include "static_vars.h"
 #include <sys/resource.h>
 
+#include "rb.h"
 #include <stdio.h>
 
 namespace tcmalloc {
+
+rb_gen(static ATTRIBUTE_UNUSED, llrb_, llrb_t, llrb_node_t, llrb_link, llrb_cmp);
 
 LLRBNode* LLRB::NewNode(Span* value) {
   LLRBNode* result = Static::llrb_node_allocator()->New();
